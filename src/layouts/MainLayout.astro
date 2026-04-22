@@ -54,7 +54,7 @@ const { title, description, pathname, type = 'website', schema } = Astro.props;
           <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-stone-900">Contact</h3>
           <ul class="mt-3 space-y-2 text-sm text-stone-600">
             <li>{site.business.name}</li>
-            <li>{site.business.city}, {site.business.region} {site.business.postalCode}</li>
+            <li>{site.business.streetAddress}, {site.business.city}, {site.business.region} {site.business.postalCode}</li>
             <li><a href={`tel:${site.business.phone}`} class="hover:text-orange-600">{site.business.phone}</a></li>
             <li><a href={`mailto:${site.business.email}`} class="hover:text-orange-600">{site.business.email}</a></li>
             <li>{site.business.hours}</li>

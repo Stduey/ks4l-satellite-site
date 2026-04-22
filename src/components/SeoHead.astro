@@ -23,6 +23,7 @@ const localBusinessSchema = {
   email: site.business.email,
   address: {
     '@type': 'PostalAddress',
+    streetAddress: site.business.streetAddress,
     addressLocality: site.business.city,
     addressRegion: site.business.region,
     postalCode: site.business.postalCode,
