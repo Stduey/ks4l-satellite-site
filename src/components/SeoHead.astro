@@ -1,0 +1,54 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  pathname: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, any> | Record<string, any>[];
+}
+
+const { title, description, pathname, image = '/og-cover.svg', type = 'website', schema } = Astro.props;
+const canonical = new URL(pathname, site.url).toString();
+const imageUrl = new URL(image, site.url).toString();
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.business.name,
+  image: imageUrl,
+  url: site.url,
+  telephone: site.business.phone,
+  email: site.business.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.business.city,
+    addressRegion: site.business.region,
+    postalCode: site.business.postalCode,
+    addressCountry: site.business.country,
+  },
+  openingHours: site.business.hours,
+  areaServed: site.business.serviceArea,
+  sameAs: site.business.sameAs,
+};
+const schemas = [localBusinessSchema].concat(schema ? (Array.isArray(schema) ? schema : [schema]) : []);
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+{
+  schemas.map((entry) => (
+    <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+  ))
+}

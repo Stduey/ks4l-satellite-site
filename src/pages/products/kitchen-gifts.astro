@@ -1,0 +1,53 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { site } from '../../data/site';
+
+const product = site.featuredProducts[2];
+const title = 'Kitchen gifts in Glendora | Thoughtful picks for cooks';
+const description = 'Browse a local-first kitchen gift angle built around elegant table pieces, artisan accents, and useful cookware from Kitchen Supplies 4 Less.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.description,
+  brand: {
+    '@type': 'Brand',
+    name: site.business.name,
+  },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: '45.78',
+    availability: 'https://schema.org/InStock',
+    url: product.warheadUrl,
+  },
+};
+---
+<MainLayout title={title} description={description} pathname="/products/kitchen-gifts" schema={schema}>
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">Gift guide angle</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tight text-stone-900">Thoughtful kitchen gifts that feel useful, not generic.</h1>
+    <div class="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <p class="text-lg leading-8 text-stone-700">
+          Search demand around kitchen gifts, Mother's Day presents, and housewarming ideas is one of the clearest openings for a
+          focused satellite site, especially when the message leans into personal curation instead of endless catalog volume.
+        </p>
+        <ul class="mt-8 space-y-4 text-sm leading-7 text-stone-700">
+          <li><strong>Best fits:</strong> bone china dinnerware, charger plates, table-ready accents, and gift-friendly cookware.</li>
+          <li><strong>Audience:</strong> local supporters, adult children buying for parents, hosts, and shoppers who want a more personal recommendation.</li>
+          <li><strong>Seasonal angle:</strong> Mother's Day, weddings, housewarmings, and holiday hosting.</li>
+        </ul>
+      </div>
+      <aside class="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-stone-500">Shopping angle</p>
+        <dl class="mt-5 space-y-4 text-sm leading-7 text-stone-700">
+          <div><dt class="font-semibold text-stone-900">Starting point</dt><dd>${product.price}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Category</dt><dd>{product.category}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Keywords</dt><dd>{product.keywords.join(', ')}</dd></div>
+        </dl>
+        <a href={product.warheadUrl} class="mt-8 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600">Shop Now</a>
+      </aside>
+    </div>
+  </section>
+</MainLayout>

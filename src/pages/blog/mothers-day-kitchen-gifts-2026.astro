@@ -1,0 +1,74 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { blogPost, site } from '../../data/site';
+
+const title = 'Mother\'s Day kitchen gifts in Glendora | 2026 gift guide';
+const description = blogPost.description;
+const canonicalPath = `/blog/${blogPost.slug}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: blogPost.title,
+  description: blogPost.description,
+  datePublished: blogPost.published,
+  dateModified: blogPost.updated,
+  author: {
+    '@type': 'Organization',
+    name: site.business.name,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: site.business.name,
+  },
+  mainEntityOfPage: new URL(canonicalPath, site.url).toString(),
+};
+---
+<MainLayout title={title} description={description} pathname={canonicalPath} type="article" schema={schema}>
+  <article class="mx-auto max-w-4xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">Blog</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tight text-stone-900">Mother's Day kitchen gifts in Glendora, ideas that feel warm and useful</h1>
+    <p class="mt-6 text-sm text-stone-500">Published April 21, 2026</p>
+    <div class="prose prose-stone mt-10 max-w-none prose-headings:font-semibold prose-a:text-orange-600">
+      <p>
+        If you want a Mother's Day gift that feels practical and personal, kitchen-focused gifts have a sweet spot.
+        They can be beautiful enough to unwrap, useful enough to keep in rotation, and memorable enough to become part of someone's home.
+      </p>
+
+      <h2>1. Bone china dinnerware that feels like affordable elegance</h2>
+      <p>
+        The Jasmine Bone China Dinnerware Set is the strongest featured product for this season because it hits two goals at once:
+        it looks elevated, and it still sits in a gift-friendly price range. For daughters, sons, and spouses buying in the Glendora area,
+        this makes a smart upgrade gift for someone who loves hosting or simply enjoys a more polished everyday table.
+      </p>
+
+      <h2>2. A dutch oven that gives home cooks a lasting staple</h2>
+      <p>
+        Enamel cast iron is one of those categories that always feels more expensive than it looks. A 4.5 QT dutch oven works for soups,
+        braises, breads, and weeknight comfort food, which makes it an easy recommendation for anyone shopping for a mom who actually cooks.
+      </p>
+
+      <h2>3. Gift combinations feel stronger than isolated products</h2>
+      <p>
+        One reason a smaller kitchen brand can compete is by curating combinations that feel intentional. Dinnerware plus a serving accent,
+        or cookware plus a note about why it matters, makes the shopping experience feel more personal than scrolling through a marketplace.
+      </p>
+
+      <h2>4. Why local-first messaging helps</h2>
+      <p>
+        Shoppers around Glendora, Covina, and San Dimas are not always looking for the absolute cheapest item on the internet.
+        Sometimes they want a gift idea with a warmer voice and a clearer recommendation. This site is designed to meet that intent and
+        guide buyers back to the main Kitchen Supplies 4 Less store.
+      </p>
+
+      <p>
+        Ready to browse? Start with the featured products below, then visit the main store to shop the full collection.
+      </p>
+    </div>
+
+    <div class="mt-12 flex flex-wrap gap-4">
+      <a href="/products/bone-china-dinnerware" class="rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600">See bone china</a>
+      <a href="/products/dutch-ovens" class="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800 hover:border-orange-500 hover:text-orange-600">See dutch oven</a>
+      <a href="https://www.kitchensupplies4less.com/" class="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800 hover:border-orange-500 hover:text-orange-600">Shop main store</a>
+    </div>
+  </article>
+</MainLayout>

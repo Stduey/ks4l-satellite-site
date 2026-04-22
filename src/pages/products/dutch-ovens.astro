@@ -1,0 +1,53 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { site } from '../../data/site';
+
+const product = site.featuredProducts[1];
+const title = 'Affordable dutch oven in Glendora | Enamel cast iron';
+const description = 'Explore the 4.5 QT enamel cast iron dutch oven, a warm affordable-luxury cookware pick from Kitchen Supplies 4 Less.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.description,
+  brand: {
+    '@type': 'Brand',
+    name: site.business.name,
+  },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: product.price,
+    availability: 'https://schema.org/InStock',
+    url: product.warheadUrl,
+  },
+};
+---
+<MainLayout title={title} description={description} pathname="/products/dutch-ovens" schema={schema}>
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">Featured cookware</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tight text-stone-900">4.5 QT Enamel Cast Iron Dutch Oven</h1>
+    <div class="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <p class="text-lg leading-8 text-stone-700">
+          This dutch oven gives Kitchen Supplies 4 Less a practical cookware anchor, positioned as an affordable-luxury alternative
+          for shoppers who want the look and feel of premium enamel cast iron without premium-brand pricing.
+        </p>
+        <ul class="mt-8 space-y-4 text-sm leading-7 text-stone-700">
+          <li><strong>Search fit:</strong> affordable dutch oven near me, enameled cast iron dutch oven, cookware store West Covina.</li>
+          <li><strong>Messaging angle:</strong> weekend braises, soups, gifting for home cooks, and polished stovetop-to-table presentation.</li>
+          <li><strong>Conversion role:</strong> pairs well with blog and seasonal content about cozy meals and elevated kitchen gifting.</li>
+        </ul>
+      </div>
+      <aside class="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-stone-500">At a glance</p>
+        <dl class="mt-5 space-y-4 text-sm leading-7 text-stone-700">
+          <div><dt class="font-semibold text-stone-900">Price</dt><dd>${product.price}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Category</dt><dd>{product.category}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Best for</dt><dd>Home cooks, hostess gifts, wedding season, cozy meal prep</dd></div>
+        </dl>
+        <a href={product.warheadUrl} class="mt-8 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600">Shop Now</a>
+      </aside>
+    </div>
+  </section>
+</MainLayout>

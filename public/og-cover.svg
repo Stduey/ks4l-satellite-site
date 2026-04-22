@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Kitchen Supplies 4 Less</title>
+  <desc id="desc">Warm kitchen gifts, dinnerware, and cookware from Glendora</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff7ed" />
+      <stop offset="100%" stop-color="#fed7aa" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g fill="#9a3412">
+    <text x="90" y="220" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">Kitchen Supplies 4 Less</text>
+    <text x="90" y="300" font-family="Inter, Arial, sans-serif" font-size="34">Glendora kitchen gifts, dinnerware, and cookware</text>
+    <text x="90" y="380" font-family="Inter, Arial, sans-serif" font-size="28">A focused SEO site that sends shoppers back to the main store.</text>
+  </g>
+</svg>

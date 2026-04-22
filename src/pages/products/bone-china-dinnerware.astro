@@ -1,0 +1,53 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { site } from '../../data/site';
+
+const product = site.featuredProducts[0];
+const title = 'Bone china dinnerware in Glendora | Jasmine set';
+const description = 'Discover the Jasmine Bone China Dinnerware Set, a giftable 16-piece collection with elegant local-first positioning for Glendora shoppers.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.description,
+  brand: {
+    '@type': 'Brand',
+    name: site.business.name,
+  },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: product.price,
+    availability: 'https://schema.org/InStock',
+    url: product.warheadUrl,
+  },
+};
+---
+<MainLayout title={title} description={description} pathname="/products/bone-china-dinnerware" schema={schema}>
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">Featured product</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tight text-stone-900">Jasmine Bone China Dinnerware Set</h1>
+    <div class="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <p class="text-lg leading-8 text-stone-700">
+          This 16-piece bone china set is the clearest Phase 1 hero product because it aligns with gift intent, elegant entertaining,
+          and the Mother's Day timing identified in the KS4L research brief.
+        </p>
+        <ul class="mt-8 space-y-4 text-sm leading-7 text-stone-700">
+          <li><strong>Positioning:</strong> affordable elegance for hosts, newlyweds, and gift buyers.</li>
+          <li><strong>Search fit:</strong> bone china dinnerware California, dinnerware sets Glendora CA, Mother's Day kitchen gifts.</li>
+          <li><strong>Why it works:</strong> strong price story versus premium dinnerware brands while still feeling elevated.</li>
+        </ul>
+      </div>
+      <aside class="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-stone-500">At a glance</p>
+        <dl class="mt-5 space-y-4 text-sm leading-7 text-stone-700">
+          <div><dt class="font-semibold text-stone-900">Price</dt><dd>${product.price}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Category</dt><dd>{product.category}</dd></div>
+          <div><dt class="font-semibold text-stone-900">Best for</dt><dd>Mother's Day, weddings, housewarmings, elegant table refreshes</dd></div>
+        </dl>
+        <a href={product.warheadUrl} class="mt-8 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600">Shop Now</a>
+      </aside>
+    </div>
+  </section>
+</MainLayout>
